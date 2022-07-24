@@ -1,0 +1,50 @@
+{% extends 'accounts/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+{% block content %}
+
+  <main class="form-signin">
+  	<div class="text-center">
+		  <form action="{% url 'login' %}" method="POST">
+		  	{% csrf_token %}
+
+		    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+		    <div class="form-floating">
+		      {% render_field form.username class='form-control' placeholder="Username" type="text" id="floatingInput"%}
+		      <label for="floatingInput">Username</label>
+		    </div>
+		    <div class="form-floating">
+		      {% render_field form.password class='form-control' placeholder="Password" type="password" id="floatingPassword"%}
+		      <label for="floatingPassword">Password</label>
+		    </div>
+		    <div class="checkbox mb-3">
+		      <label>
+		        <input type="checkbox" value="remember-me"> Remember me
+		      </label>
+		    </div>
+		    <div class="form-group">
+		    	<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+		    	<small class="text-muted ml-3">
+		    		<a href="{% url 'password_reset' %}">Forget Password?</a>
+		    	</small>
+		    </div>
+		  </form>
+		  <div class="border-top pt-3">
+		  	<small class="text-muted">
+		  		Don't have account? <a class="ml-2" href="{% url 'register' %}">
+		  			Sign Up</a>
+		  	</small>
+		  </div>
+		</div>
+	</main>
+
+{% endblock %}
+
+
+
+	
+
